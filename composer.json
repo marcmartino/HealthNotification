@@ -1,0 +1,13 @@
+{
+    "name": "lifealert/healthnotification",
+    "description": "Notifications about diagnosis for medical patients.",
+    "authors": [
+        {
+            "name": "Nate Turner",
+            "email": "nater1992@gmail.com"
+        }
+    ],
+    "require": {
+        "pimple/pimple": "~3.0"
+    }
+}
