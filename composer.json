@@ -1,5 +1,5 @@
 {
-    "name": "lifealert/healthnotification",
+    "name": "healthnotification/healthnotification",
     "description": "Notifications about diagnosis for medical patients.",
     "authors": [
         {
@@ -9,5 +9,13 @@
     ],
     "require": {
         "pimple/pimple": "~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "HealthNotification": "api/src"
+        }
+    },
+    "config": {
+        "vendor-dir": "api/vendor"
     }
 }
