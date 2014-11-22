@@ -2,8 +2,6 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Parse\ParseClient;
-use Parse\ParseObject;
-
 
 $post = file_get_contents('php://input');
 
