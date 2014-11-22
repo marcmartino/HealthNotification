@@ -1,0 +1,16 @@
+{
+  "name": "Solomon Health Link",
+  "version": "0.0.1",
+  "homepage": "https://github.com/marcmartino/HealthNotification",
+  "authors": [
+    "Marc <mrmarcmartino@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "lodash": "~2.4.1",
+    "jquery": "~2.1.1",
+    "twig.js": "~0.7.2"
+  }
+}
