@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Solomon Health Link Portal</title>
+    <link rel="stylesheet" href="vendor/foundation-5.4.7/css/foundation.min.css">
+</head>
+<body>
+    <form action="http://localhost:8080/index.php" method="POST">
+        <div class="row">
+            <div class="small-8 columns">
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label for="patientId" class="right inline">Patient</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <input type="text" id="patientId" name="patientId" placeholder="John Smith">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label for="icd9" class="right inline">Diagnosis</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <input type="text" id="icd9" name="icd9" placeholder="123.45">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label for="comment" class="right inline">Comment</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <textarea placeholder="small-12.columns" id="comment" name="comment"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <button type="submit" class="right">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
