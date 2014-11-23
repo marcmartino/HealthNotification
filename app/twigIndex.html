@@ -36,7 +36,7 @@
 	</body>
 	<script>
 		
-		var globalUid = "2";
+		var globalUid = localStorage.uid;
 		var navKey = {
 			// index: "html/login.html.twig",
 			login: "html/login.html.twig",
@@ -74,8 +74,6 @@
 			navigate($(this).attr("data-key"));
 		});
 
-		navigate("feed");
-
 		var icdNineCodes = {};
 		var Diagnosis = Parse.Object.extend("Diagnosis");
 		var ICD9 = Parse.Object.extend("ICD9");
@@ -86,40 +84,105 @@
 					all[code.attributes.code] = code.attributes.name;
 					return all;
 				}, {});
-				fetchDiagnosisData();
+				//fetchDiagnosisData();
 			}
 		});
 
+		var messages = [];
 		function fetchDiagnosisData(uid, thenFunc) {
 			uid = globalUid || uid;
 
-			var messages = [];
-			
-			var query = new Parse.Query(Diagnosis);
-			query.equalTo("patientId", uid);
-			query.find({
-			  success: function(diagnosis) {
-			    // The object was retrieved successfully.
-			    
-			    
-			    _.forEach(diagnosis, function (singleDiag) {
-			    	var thisDiag = singleDiag.attributes;
-			    	if (thisDiag.icd9 && icdNineCodes[thisDiag.icd9]) {
-			    		thisDiag.codeMessage = icdNineCodes[thisDiag.icd9];
-			    	}
-			    	thisDiag.updatedAt = singleDiag.updatedAt;
-			    	messages.push(singleDiag.attributes);
-			    });
-			    navigate("feed", {diags: messages});
-			  },
-			  error: function(object, error) {
-			    // The object was not retrieved successfully.
-			    // error is a Parse.Error with an error code and message.
-			    console.warn("boooo");
-			  }
-			});
+			if (uid) {
+				if (messages.length === 0) {
+					var query = new Parse.Query(Diagnosis);
+					query.equalTo("patientId", uid);
+					query.find({
+					  success: function(diagnosis) {
+					    // The object was retrieved successfully.
+					    
+					    
+					    _.forEach(diagnosis, function (singleDiag) {
+					    	var thisDiag = singleDiag.attributes;
+					    	if (thisDiag.icd9 && icdNineCodes[thisDiag.icd9]) {
+					    		thisDiag.codeMessage = icdNineCodes[thisDiag.icd9];
+					    	}
+					    	thisDiag.updatedAt = singleDiag.updatedAt;
+					    	messages.push(singleDiag.attributes);
+					    });
+					    navigate("feed", {diags: messages});
+					  },
+					  error: function(object, error) {
+					    // The object was not retrieved successfully.
+					    // error is a Parse.Error with an error code and message.
+					    console.warn("boooo");
+					  }
+					});
+				} else {
+				    navigate("feed", {diags: messages});
+				}
+			} else {
+				navigate("login");
+			}
 
 		}
+
+		function navigateToDefault() {
+			if (globalUid) {
+				fetchDiagnosisData();
+			}
+			else {
+				navigate("login");
+			}
+		}
+
+		navigateToDefault();
+
+		$("body").on("submit", "#register", function (e) {
+			e.preventDefault();
+			console.log("registering");
+			var jqThis = $(this),
+				phoneNum = jqThis.find("[name=phoneNum]").val(),
+				password = jqThis.find("[name=password]").val();
+
+			var user = new Parse.User();
+			user.set("username", phoneNum);
+			user.set("password", password);
+			 
+			user.signUp(null, {
+			  success: function(user) {
+			    // Hooray! Let them use the app now.
+			    console.log("you are signed up!");
+			    console.log(user);
+			    globalUid = user.id;
+			    localStorage.uid = user.id;
+			    fetchDiagnosisData();
+			  },
+			  error: function(user, error) {
+			    // Show the error message somewhere and let the user try again.
+			    alert("Error: " + error.code + " " + error.message);
+			  }
+			});
+		});
+		$("body").on("submit", "#login", function (e) {
+			e.preventDefault();
+			console.log("logging in");
+			var jqThis = $(this),
+				phoneNum = jqThis.find("[name=phoneNum]").val(),
+				password = jqThis.find("[name=password]").val();
+
+			Parse.User.logIn(phoneNum, password, {
+			  success: function(user) {
+			    // Do stuff after successful login.
+			    console.log("you're logged in");
+			    globalUid = user.id;
+			    localStorage.uid = user.id;
+			    fetchDiagnosisData();
+			  },
+			  error: function(user, error) {
+			    // The login failed. Check error to see why.
+			  }
+			});
+		});
 
 	</script>
 </html>
