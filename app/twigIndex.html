@@ -1,0 +1,61 @@
+<!-- <script src="../javascripts/build/_bower.js"></script> -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/lodash/dist/lodash.js"></script>
+<script src="bower_components/twig.js/twig.js"></script>
+<script src="../javascripts/main.js"></script>
+
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<!-- Place favicon.ico in the root directory -->
+
+		  <link href="../stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+		  <link href="../stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+		  <!--[if IE]>
+		      <link href="../stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+		  <![endif]-->
+
+		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+		':35729/livereload.js?snipver=2"></' + 'script>')</script>
+
+	</head>
+	<body>
+
+
+	</body>
+	<script>
+		console.log("running");
+		var navKey = {
+			index: "html/login.html.twig",
+			login: "html/login.html.twig",
+			register: "html/register.html.twig",
+			// login: "html/login.html.twig",
+		}, navTemplObj = {};
+		function nav(location) {
+			if(navKey[location]) {
+				twig({
+					id: location,
+					href: navKey[location],
+					load: (function (thisLoc, locUri) {
+						return function (temp) {
+							console.log(thisLoc + " template loaded");
+							navTemplObj = {}; navTemplObj[thisLoc] = true;
+							$("body").html(twig({ref: thisLoc}).render({nav: navTemplObj}));
+						};
+					}(location, navKey[location])),
+				});
+			} else {
+				console.error("nav failed");
+			} 
+		}
+
+		nav("index");
+	</script>
+</html>
