@@ -72,7 +72,7 @@
 					});
 				}
 			} else {
-				console.error("nav failed");
+				// console.error("nav failed");
 			} 
 		}
 		$("body").on("click", ".link[data-key]", function (e) {
@@ -120,7 +120,7 @@
 					  error: function(object, error) {
 					    // The object was not retrieved successfully.
 					    // error is a Parse.Error with an error code and message.
-					    console.warn("boooo");
+					    // console.warn("boooo");
 					  }
 					});
 				} else {
@@ -145,7 +145,7 @@
 
 		$("body").on("submit", "#register", function (e) {
 			e.preventDefault();
-			console.log("registering");
+			// console.log("registering");
 			var jqThis = $(this),
 				phoneNum = jqThis.find("[name=phoneNum]").val(),
 				password = jqThis.find("[name=password]").val();
@@ -157,8 +157,8 @@
 			user.signUp(null, {
 			  success: function(user) {
 			    // Hooray! Let them use the app now.
-			    console.log("you are signed up!");
-			    console.log(user);
+			    // console.log("you are signed up!");
+			    // console.log(user);
 			    globalUid = user.id;
 			    localStorage.uid = user.id;
 			    fetchDiagnosisData();
@@ -171,7 +171,7 @@
 		});
 		$("body").on("submit", "#login", function (e) {
 			e.preventDefault();
-			console.log("logging in");
+			// console.log("logging in");
 			var jqThis = $(this),
 				phoneNum = jqThis.find("[name=phoneNum]").val(),
 				password = jqThis.find("[name=password]").val();
@@ -179,7 +179,7 @@
 			Parse.User.logIn(phoneNum, password, {
 			  success: function(user) {
 			    // Do stuff after successful login.
-			    console.log("you're logged in");
+			    // console.log("you're logged in");
 			    globalUid = user.id;
 			    localStorage.uid = user.id;
 			    fetchDiagnosisData();
