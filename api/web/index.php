@@ -1,4 +1,5 @@
 <?php
+session_start();
 require __DIR__ . '/../vendor/autoload.php';
 
 use Parse\ParseClient;
@@ -7,8 +8,6 @@ use Parse\ParseObject;
 
 $post = file_get_contents('php://input');
 
-
-echo $post;
 
 $data = json_decode($post, 1);
 
@@ -22,3 +21,7 @@ $testObject->set("patientId", (string) $_POST['patientId']);
 $testObject->set("icd9", (string) $_POST['icd9']);
 $testObject->set("comment", (string) $_POST['comment']);
 $testObject->save();
+
+$_SESSION['flash_message'] = 'Diagnosis Saved.';
+
+header( 'Location: backoffice.php' ) ;
