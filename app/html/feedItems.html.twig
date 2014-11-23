@@ -1,13 +1,14 @@
 {% if diags and (diags|length > 0)  %}
 	{% for diag in diags %}
 		<div class="feedItem">
-			<h3>{{ diag.updatedAt|date("F jS") }} at {{ diag.updatedAt|date("g:ia") }} - {{ diag.icd9 }}</h3>
+            <h3 class="from">Doctor Oz</h3>
 			<div class="itemMessage">
-				<div id="codeMessage">{{ diag.codeMessage}}</div>
+				{#<div id="codeMessage">{{ diag.codeMessage}}</div>#}
 				{% if diag.comment %}
 					<div id="drComment">Note from the Dr: <span>{{ diag.comment }}</span></div>
 				{% endif %}
 			</div>
+            <div class="dateStamp">{{ diag.updatedAt|date("F jS") }} at {{ diag.updatedAt|date("g:ia") }}</div>
 		</div>
 	{% endfor %}
 {% else %}
