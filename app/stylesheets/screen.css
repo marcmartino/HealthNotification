@@ -275,10 +275,15 @@ footer #topFooter, footer #bottomFooter {
 /* line 191, ../sass/screen.scss */
 .itemIcons {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 5px;
+  right: 3%;
 }
 /* line 195, ../sass/screen.scss */
+.itemIcons #pillImg {
+  margin-bottom: 5px;
+}
+/* line 198, ../sass/screen.scss */
 .itemIcons img {
-  max-width: 50px;
+  max-height: 20px;
+  display: block;
 }

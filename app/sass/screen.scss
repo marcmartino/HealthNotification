@@ -190,9 +190,13 @@ footer {
 }
 .itemIcons {
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 5px;
+	right: 3%;
+	#pillImg {
+		margin-bottom: 5px;
+	}
 	img {
-		max-width: 50px;
+		max-height: 20px;
+		display: block;
 	}
 }

@@ -2,11 +2,11 @@
 	{% for diag in diags %}
 		<div class="feedItem">
 			<div class="itemIcons">
-				{% if diag.perscribed %}
-					<img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/pill.png" alt="">
+				{% if diag.perscription %}
+					<img id="pillImg" src="images/pill.png" alt="">
 				{% endif %}
 				{% if diag.links %}
-					<img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/link.png" alt="">
+					<img src="images/link.png" alt="">
 				{% endif %}</div>
             <h3 class="from">Doctor Oz</h3>
             <div class="dateStamp">{{ diag.updatedAt|date("F jS") }} at {{ diag.updatedAt|date("g:ia") }}</div>
@@ -18,8 +18,8 @@
 				{% endif %}
 			</div>
 			<div class="hiddenItem">
-				{% if diag.perscribed %}
-					<div class="perscribed">Perscribed: {{ diag.perscribed }}</div>
+				{% if diag.perscription %}
+					<div class="perscription">Perscribed: {{ diag.perscription }}</div>
 				{% endif %}
 				{% if diag.links %}
 					<div class="links">Links: {{ diag.links }}</div>
