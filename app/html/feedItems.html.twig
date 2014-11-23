@@ -1,14 +1,30 @@
 {% if diags and (diags|length > 0)  %}
 	{% for diag in diags %}
 		<div class="feedItem">
+			<div class="itemIcons">
+				{% if diag.perscribed %}
+					<span class="icon icon-lifebouy"></span>
+				{% endif %}
+				{% if diag.links %}
+					<span class="icon icon-link"></span>
+				{% endif %}</div>
             <h3 class="from">Doctor Oz</h3>
+            <div class="dateStamp">{{ diag.updatedAt|date("F jS") }} at {{ diag.updatedAt|date("g:ia") }}</div>
 			<div class="itemMessage">
-				{#<div id="codeMessage">{{ diag.codeMessage}}</div>#}
+				<div id="codeMessage">{{ diag.codeMessage}}</div>
+				{# <div id="friendlyName">diag.frienlyName</div> #}
 				{% if diag.comment %}
 					<div id="drComment">Note from the Dr: <span>{{ diag.comment }}</span></div>
 				{% endif %}
 			</div>
-            <div class="dateStamp">{{ diag.updatedAt|date("F jS") }} at {{ diag.updatedAt|date("g:ia") }}</div>
+			<div class="hiddenItem">
+				{% if diag.perscribed %}
+					<div class="perscribed">Perscribed: {{ diag.perscribed }}</div>
+				{% endif %}
+				{% if diag.links %}
+					<div class="links">Links: {{ diag.links }}</div>
+				{% endif %}
+			</div>
 		</div>
 	{% endfor %}
 {% else %}

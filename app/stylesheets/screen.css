@@ -225,7 +225,7 @@ footer #topFooter, footer #bottomFooter {
 #headerSearch input[type=submit] {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 5px;
   background-color: transparent;
   border: 0 solid transparent;
 }
@@ -260,4 +260,9 @@ footer #topFooter, footer #bottomFooter {
   margin: auto;
   color: #949090;
   text-decoration: none;
+}
+
+/* line 185, ../sass/screen.scss */
+.feedItem .hiddenItem {
+  disdplay: none;
 }

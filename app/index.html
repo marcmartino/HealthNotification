@@ -2,7 +2,6 @@
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/lodash/dist/lodash.js"></script>
 <script src="bower_components/twig.js/twig.js"></script>
-<script src="../javascripts/main.js"></script>
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -87,7 +86,7 @@
 		icdQuery.find({
 			success: function (codes) {
 				icdNineCodes = _.reduce(codes, function (all, code) {
-					all[code.attributes.code] = code.attributes.name;
+					all[code.attributes.code] = code.attributes.friendlyName;
 					return all;
 				}, {});
 				//fetchDiagnosisData();
@@ -194,6 +193,9 @@
 			delete localStorage.uid;
 			navigate("login");
 		}
+		$("body").on("click", ".feedItem", function (e) {
+			$(this).find(".hiddenItem").toggle();
+		});
 
 	</script>
 </html>
