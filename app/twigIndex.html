@@ -194,5 +194,10 @@
 			});
 		});
 
+		function logout() {
+			delete localStorage.uid;
+			navigate("login");
+		}
+
 	</script>
 </html>
