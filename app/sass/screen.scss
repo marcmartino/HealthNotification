@@ -183,5 +183,16 @@ footer {
 }
 
 .feedItem .hiddenItem {
-	disdplay: none;
+	display: none;
+}
+.feedItem {
+	position: relative;
+}
+.itemIcons {
+	position: absolute;
+	top: 0;
+	right: 0;
+	img {
+		max-width: 50px;
+	}
 }

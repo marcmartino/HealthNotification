@@ -264,5 +264,21 @@ footer #topFooter, footer #bottomFooter {
 
 /* line 185, ../sass/screen.scss */
 .feedItem .hiddenItem {
-  disdplay: none;
+  display: none;
+}
+
+/* line 188, ../sass/screen.scss */
+.feedItem {
+  position: relative;
+}
+
+/* line 191, ../sass/screen.scss */
+.itemIcons {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+/* line 195, ../sass/screen.scss */
+.itemIcons img {
+  max-width: 50px;
 }
