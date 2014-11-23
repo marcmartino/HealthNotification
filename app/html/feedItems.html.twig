@@ -1,0 +1,17 @@
+{% if diags and (diags|length > 0)  %}
+	{% for diag in diags %}
+		<div class="feedItem">
+			<h3>{{ diag.updatedAt|date("F jS") }} at {{ diag.updatedAt|date("g:ia") }} - {{ diag.icd9 }}</h3>
+			<div class="itemMessage">
+				<div id="codeMessage">{{ diag.codeMessage}}</div>
+				{% if diag.comment %}
+					<div id="drComment">Note from the Dr: <span>{{ diag.comment }}</span></div>
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+{% else %}
+	<div id="noFeed">
+		You have no messages in your feed. Please check back in a bit or <a href="#">contact us</a>
+	</div>
+{% endif %}

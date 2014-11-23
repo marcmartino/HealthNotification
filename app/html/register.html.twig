@@ -1,5 +1,12 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-	<p>register contents</p>
+	<form action="" id="register">
+		<div class="inputs">
+			<input class="roundedInputs" type="text" placeholder="Email or Username">
+			<input class="roundedInputs" type="text" placeholder="Password">
+			<input class="roundedInputs" type="text" placeholder="Verify Password">
+		</div>
+		<input class="roundedInputs saveButton" type="submit" value="Submit">
+	</form>
 {% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block header %}
+	<div id="headerLogo">
+		<img src="images/Solomon-Health-Link.png" />
+		<form action="" id="headerSearch">
+			<input class="roundedInput" type="text">
+			<input value="&#x1f50e;" type="submit"></form>
+	</div>
+{% endblock %}
+
+{% block navigation %}
+{% endblock %}
+{% block footer %}
+{% endblock %}
+
+{% block content %}
+	<div id="feedItems">
+		{% include 'feedItems.html.twig' %}
+	</div>
+{% endblock %}

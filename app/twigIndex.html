@@ -22,6 +22,10 @@
 		      <link href="../stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
 		  <![endif]-->
 
+		<script src="javascripts/vendor/parse-1.3.1.js"></script>
+		<script src="javascripts/config.js"></script>
+		<script src="javascripts/app.js"></script>
+
 		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
 		':35729/livereload.js?snipver=2"></' + 'script>')</script>
 
@@ -31,31 +35,91 @@
 
 	</body>
 	<script>
-		console.log("running");
+		
+		var globalUid = "2";
 		var navKey = {
-			index: "html/login.html.twig",
+			// index: "html/login.html.twig",
 			login: "html/login.html.twig",
 			register: "html/register.html.twig",
-			// login: "html/login.html.twig",
+			feed: "html/feed.html.twig",
 		}, navTemplObj = {};
-		function nav(location) {
+		function navigate(location, data) {
 			if(navKey[location]) {
-				twig({
-					id: location,
-					href: navKey[location],
-					load: (function (thisLoc, locUri) {
-						return function (temp) {
-							console.log(thisLoc + " template loaded");
-							navTemplObj = {}; navTemplObj[thisLoc] = true;
-							$("body").html(twig({ref: thisLoc}).render({nav: navTemplObj}));
-						};
-					}(location, navKey[location])),
-				});
+				var dataObj = data || {};
+				dataObj.nav = {};
+				dataObj.nav[location] = true;
+
+				
+				if (twig({ref: location})) {
+					
+					$("body").html(twig({ref: location}).render(dataObj));
+				} else {
+					twig({
+						id: location,
+						href: navKey[location],
+						load: (function (thisLoc, locUri) {
+							return function (temp) {
+								
+								$("body").html(twig({ref: thisLoc}).render(dataObj));
+							};
+						}(location, navKey[location])),
+					});
+				}
 			} else {
 				console.error("nav failed");
 			} 
 		}
+		$("body").on("click", ".link[data-key]", function (e) {
+			e.preventDefault();
+			navigate($(this).attr("data-key"));
+		});
 
-		nav("index");
+		navigate("feed");
+
+		var icdNineCodes = {};
+		var Diagnosis = Parse.Object.extend("Diagnosis");
+		var ICD9 = Parse.Object.extend("ICD9");
+		icdQuery = new Parse.Query(ICD9);
+		icdQuery.find({
+			success: function (codes) {
+				icdNineCodes = _.reduce(codes, function (all, code) {
+					all[code.attributes.code] = code.attributes.name;
+					return all;
+				}, {});
+				fetchDiagnosisData();
+			}
+		});
+
+		function fetchDiagnosisData(uid, thenFunc) {
+			uid = globalUid || uid;
+
+			var messages = [];
+			
+			var query = new Parse.Query(Diagnosis);
+			query.equalTo("patientId", uid);
+			query.find({
+			  success: function(diagnosis) {
+			    // The object was retrieved successfully.
+			    
+			    
+			    _.forEach(diagnosis, function (singleDiag) {
+			    	var thisDiag = singleDiag.attributes;
+			    	if (thisDiag.icd9 && icdNineCodes[thisDiag.icd9]) {
+			    		thisDiag.codeMessage = icdNineCodes[thisDiag.icd9];
+			    	}
+			    	thisDiag.updatedAt = singleDiag.updatedAt;
+			    	messages.push(singleDiag.attributes);
+			    });
+			    navigate("feed", {diags: messages});
+			  },
+			  error: function(object, error) {
+			    // The object was not retrieved successfully.
+			    // error is a Parse.Error with an error code and message.
+			    console.warn("boooo");
+			  }
+			});
+
+		}
+
 	</script>
 </html>

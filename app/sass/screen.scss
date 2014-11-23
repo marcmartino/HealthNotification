@@ -10,6 +10,11 @@ html {
 body {
 	background-color: $white;
 }
+
+.link[data-key] {
+	cursor: pointer;
+}
+
 header {
 	background-color: $blue;
 	-webkit-box-shadow: inset 0px 0px 90px 0px rgba(0,0,0,0.75);
@@ -92,5 +97,69 @@ footer {
 
 
 #content {
-	padding: 0 1%;
+	// padding: 0 1%;
+}
+
+#register, #login {
+	.inputs {
+		padding: 10px 0 10px;
+		background-color: $gray;
+		margin-bottom: 10px;
+		.roundedInputs {
+			display: block;
+			margin: 0 auto 10px;
+		}
+	}
+	.roundedInputs {
+		padding: 5px;
+
+	}
+	.saveButton {
+		margin: auto;
+		display: block;
+	}
+
+}
+.saveButton {
+	background-color: $blue;
+	color: $white;
+}
+.roundedInputs {
+	border-radius: 13px;
+	border: 1px solid $black;
+}
+
+#headerSearch {
+	display: block;
+	margin: auto;
+	width: 38%;
+	margin-top: 10px;
+	position: relative;
+	input {
+		border-radius: 13px;
+		&[type=text] {
+			padding-left: 18px;
+			border: 1px solid black;
+			width: 100%;
+		}
+		&[type=submit] {
+			position: absolute;
+			left: 0;
+			top: 0;
+			background-color: transparent;
+			border: 0 solid transparent;
+		}
+	}
+}
+
+#feedItems {
+	padding: 10px 3%;
+}
+.feedItem {
+	border-bottom: 1px solid $gray;
+	padding: 20px 2%;
+	text-align: center;
+	h3 {
+		margin-bottom: 10px;
+	}
 }

@@ -5,15 +5,14 @@
 			<img src="images/Solomon-Health-Link.png" />
 			<img id="logo" src="images/Logo.png" alt="" />
 		</div>
-		{# {% include defaultHeader %} #}
 	{% endblock %}
 </header>
 
 <nav>
-	{% block nav %}
+	{% block navigation %}
 		<ul>
-			<li {% if nav.register %}class="active"{% endif %}>Register</li>
-			<li {% if nav.login %}class="active"{% endif %}>Login</li>
+			<li class="link" data-key="register" {% if nav.register == true %}class="active"{% endif %}>Register</li>
+			<li class="link" data-key="login" {% if nav.login == true %}class="active"{% endif %}>Login</li>
 		</ul>
 	{% endblock %}
 </nav>
