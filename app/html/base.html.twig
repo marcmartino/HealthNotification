@@ -1,0 +1,39 @@
+
+<header>
+	{% block header %}
+		<div id="headerLogo">
+			<img src="images/Solomon-Health-Link.png" />
+			<img id="logo" src="images/Logo.png" alt="" />
+		</div>
+		{# {% include defaultHeader %} #}
+	{% endblock %}
+</header>
+
+<nav>
+	{% block nav %}
+		<ul>
+			<li {% if nav.register %}class="active"{% endif %}>Register</li>
+			<li {% if nav.login %}class="active"{% endif %}>Login</li>
+		</ul>
+	{% endblock %}
+</nav>
+
+<div id="content">
+	{% block content %}
+		<p>Base contents</p>
+	{% endblock %}
+</div>
+
+<footer>
+	{% block footer %}
+		<ul id="topFooter">
+			<li>Q&A</li>
+			<li>Pharmacy</li>
+			<li>Contact</li>
+		</ul>
+		<ul id="bottomFooter">
+			<li>Privacy</li>
+			<li>About</li>
+		</ul>
+	{% endblock %}
+</footer>

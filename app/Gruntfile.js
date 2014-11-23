@@ -23,8 +23,8 @@ module.exports = function(grunt) {
     // },
     bower_concat: {
       all: {
-        dest: 'build/_bower.js',
-        cssDest: 'build/_bower.css',
+        dest: 'javascripts/build/_bower.js',
+        cssDest: 'javascripts/build/_bower.css',
       }
 
     },

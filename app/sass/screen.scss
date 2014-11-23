@@ -1,10 +1,96 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@import "compass/reset";
+@import "_uikit";
 
-// @import "compass/reset";
-
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 body {
-	background-color: white;
+	background-color: $white;
+}
+header {
+	background-color: $blue;
+	-webkit-box-shadow: inset 0px 0px 90px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: inset 0px 0px 90px 0px rgba(0,0,0,0.75);
+	box-shadow: inset 0px 0px 90px 0px rgba(0,0,0,0.75);
+	z-index: 1;
+	overflow: hidden;
+	#headerLogo {
+		margin: 15px 0;
+		z-index: 3;
+		img {
+			max-height: 50px;
+			display: block;
+			margin: auto;
+		}
+	}
+	#logo {
+		margin-top: 10px !important;
+		max-height: 100px !important;
+	}
+}
+
+nav {
+	position: relative;
+	top: -26px;
+	ul {
+		display: block;
+	}
+	li {
+		display: inline-block;
+		width: 49%;
+		color: $black;
+		text-align: center;
+		padding: 0;
+		margin: 0;
+		line-height: 1rem;
+		&.active {
+			color: $white;
+			position: relative;
+			&:after {
+				content: '';
+				height: 0px;
+				width: 0px;
+				border: 5px solid transparent;
+				position: absolute;
+				top: 1rem;
+				left: 49.0%;
+				border-bottom: 5px solid $white;
+			}
+		}
+	}
+
+}
+
+footer {
+	li {
+		border-left: 1px solid $gray;
+		color: $blue;
+		display: inline-block;
+		&:nth-of-type(1) {
+			border-left-width: 0;
+		}
+	}
+	#topFooter, #bottomFooter {
+		text-align: center;
+	}
+}
+#topFooter {
+	& > li {
+		padding: 10px;
+	}
+}
+#bottomFooter {
+	& > li {
+		padding: 5px;
+		font-size: smaller;
+	}
+}
+
+
+
+#content {
+	padding: 0 1%;
 }
