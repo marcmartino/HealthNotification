@@ -112,6 +112,11 @@
 					    		thisDiag.codeMessage = icdNineCodes[thisDiag.icd9];
 					    	}
 					    	thisDiag.updatedAt = singleDiag.updatedAt;
+					    	if (thisDiag.links) {
+					    		thisDiag.links = _.map(thisDiag.links.split(","), function(str) {
+					    			return "<a href='#'>" + $.trim(str) + "</a>";
+						    	}).join(", ");
+					    	}
 					    	messages.push(singleDiag.attributes);
 					    });
 					    navigate("feed", {diags: messages});

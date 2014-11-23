@@ -270,23 +270,24 @@ footer #topFooter, footer #bottomFooter {
 /* line 188, ../sass/screen.scss */
 .feedItem {
   position: relative;
+  min-height: 50px;
 }
-/* line 190, ../sass/screen.scss */
+/* line 191, ../sass/screen.scss */
 .feedItem.open {
   border-left: 5px solid #dfdede;
 }
 
-/* line 194, ../sass/screen.scss */
+/* line 195, ../sass/screen.scss */
 .itemIcons {
   position: absolute;
   top: 5px;
   right: 3%;
 }
-/* line 198, ../sass/screen.scss */
+/* line 199, ../sass/screen.scss */
 .itemIcons #pillImg {
   margin-bottom: 5px;
 }
-/* line 201, ../sass/screen.scss */
+/* line 202, ../sass/screen.scss */
 .itemIcons img {
   max-height: 20px;
   display: block;
