@@ -224,8 +224,8 @@ footer #topFooter, footer #bottomFooter {
 /* line 145, ../sass/screen.scss */
 #headerSearch #magnify {
   position: absolute;
-  left: 0;
-  top: 5px;
+  left: 5px;
+  top: 2px;
   max-height: 15px;
 }
 
