@@ -141,13 +141,14 @@ footer {
 			border: 1px solid black;
 			width: 100%;
 		}
-		&[type=submit] {
-			position: absolute;
-			left: 0;
-			top: 5px;
-			background-color: transparent;
-			border: 0 solid transparent;
-		}
+	}
+	#magnify {
+		position: absolute;
+		left: 0;
+		top: 5px;
+		// background-color: transparent;
+		// border: 0 solid transparent;
+		max-height: 15px;
 	}
 }
 
