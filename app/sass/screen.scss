@@ -170,4 +170,14 @@ footer {
       color: $darkGray;
       font-size: .7em;
     }
+} 
+
+#footerLogout {
+	text-align: center;
+	padding: 10px;
+	margin-top: 20px;
+	display: block;
+	margin: auto;
+	color: $darkGray;
+	text-decoration: none;
 }
