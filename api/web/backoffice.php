@@ -81,7 +81,7 @@ session_start();
                         <label for="comment" class="right inline">Comment</label>
                     </div>
                     <div class="small-9 columns">
-                        <textarea placeholder="small-12.columns" id="comment" name="comment"></textarea>
+                        <textarea placeholder="Drink plenty of water." id="comment" name="comment"></textarea>
                     </div>
                 </div>
                 <div class="row">
